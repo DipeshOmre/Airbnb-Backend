@@ -1,6 +1,6 @@
-<%- include("partials/head") %>
+<%- include("../partials/head") %>
 
-<%- include("partials/head2") %>
+<%- include("../partials/head2") %>
 
     <form action="/host/add-home" method='POST' class="p-10 mx-auto rounded-2xl mt-16 flex flex-col justify-center items-center w-[70%] bg-gray-500 gap-5 ">
             <h1 class="text-[3em] font-bold">Fill the home info</h1>
@@ -41,6 +41,8 @@
             class="bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold px-6 py-2 rounded-md transition"
         >
     </form>
+    <%- include("../partials/footer") %>
+
 </body>
 
 </html>
