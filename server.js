@@ -1,10 +1,10 @@
 const express=require('express');
 const app=express();
-const userRouter=require('./routes/userrouter');
-const {hostRouter}=require('./routes/hostRouter');
-const {registeredHomes}=require('./routes/hostRouter');
+const storeRouter =require('./routes/storeRouter');
+const hostRouter=require('./routes/hostRouter');
 const rootDir=require("./utils/pathUtil"); // Assuming pathUtil.js is in the utils folder
 const port=3000;
+
 const path = require('path');
 const { errorcont } = require('./controller/error');
 app.set('view engine','ejs');
@@ -15,8 +15,7 @@ app.use((req,res,next)=>{
     next();
 });
 app.use(express.urlencoded());
-app.use(userRouter);
-
+app.use(storeRouter);
 app.use("/host",hostRouter);
 
 // here we come means there is no response sent by the above routes
