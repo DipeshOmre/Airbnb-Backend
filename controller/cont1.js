@@ -1,3 +1,5 @@
+const Home = require("../model/home");
+
 const registeredHomes=[];
 const getaddhome = (req, res, next) => {
     // res.sendFile(path.join(rootDir,'views','addhome.html'));
@@ -5,7 +7,7 @@ const getaddhome = (req, res, next) => {
 }
 exports.postaddhome = (req, res, next) => {
     registeredHomes.push(req.body);
-    console.log(registeredHomes);
+    console.log(registeredHomes);    
     // res.sendFile(path.join(rootDir,'views','homeAdded.html'));
     res.render("homeAdded", { registeredHomes: registeredHomes, pageTitle: "Succes page" })
 
