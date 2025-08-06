@@ -4,13 +4,6 @@ exports.gethome = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
         res.render('store/home-list', { registeredHomes: registeredHomes, pageTitle: 'home-list' })
     });
-
-    // res.send("<h1>Welcome to Airbnb</h1><a href='/host/add-home'>Add Home</a>");
-    // res.sendFile("C://Users//hp//Documents//Backend//Express concepts//airbnb//views//home.html")
-    // res.sendFile(path.join(rootDir,'views','home.html'));
-
-    // res.send("hell")
-
 }
 exports.getBookings=(req,res,next)=>{
     Home.fetchAll((registeredHomes) => {
@@ -19,7 +12,7 @@ exports.getBookings=(req,res,next)=>{
 }
 exports.getFavouriteList=(req,res,next)=>{
     Home.fetchAll((registeredHomes) => {
-        res.render('store/favourite-list', { registeredHomes: registeredHomes, pageTitle: 'favourite' })
+        res.render('store/favourite-list', { registeredHomes: registeredHomes, pageTitle: 'favourite-list' })
     });
 }
 exports.getIndex=(req,res,next)=>{
