@@ -12,17 +12,28 @@ exports.getBookings = (req, res, next) => {
     });
 }
 exports.getFavouriteList = (req, res, next) => {
-    Home.fetchAll((registeredHomes) => {
-        getFavourites((filt)=>{
-            const newreg=registeredHomes.filter(element=>(filt.includes(element.id)));
+    // Home.fetchAll((registeredHomes) => {
+    //     getFavourites((filt)=>{
+    //         const newreg=registeredHomes.filter(element=>(filt.includes(element.id)));
+    //         res.render('store/favourite-list', { registeredHomes: newreg, pageTitle: 'favourite-list' })
+    //     })
+    // });
+
+    // ALSO
+
+    getFavourites((favs)=>{
+        Home.fetchAll((registeredHomes)=>{
+            const newreg=favs.map(homeId=>registeredHomes.find(home=>home.id===homeId));
             res.render('store/favourite-list', { registeredHomes: newreg, pageTitle: 'favourite-list' })
         })
-    });
+    })
 }
 exports.getIndex = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
         res.render('store/index', { registeredHomes: registeredHomes, pageTitle: 'index' })
     });
+
+    
 }
 exports.getHomeDetails = (req, res, next) => {
     const homeId = req.params.homeId;
