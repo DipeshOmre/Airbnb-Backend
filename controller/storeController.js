@@ -5,18 +5,24 @@ exports.gethome = (req, res, next) => {
         res.render('store/home-list', { registeredHomes: registeredHomes, pageTitle: 'home-list' })
     });
 }
-exports.getBookings=(req,res,next)=>{
+exports.getBookings = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
         res.render('store/bookings', { registeredHomes: registeredHomes, pageTitle: 'bookings' })
     });
 }
-exports.getFavouriteList=(req,res,next)=>{
+exports.getFavouriteList = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
         res.render('store/favourite-list', { registeredHomes: registeredHomes, pageTitle: 'favourite-list' })
     });
 }
-exports.getIndex=(req,res,next)=>{
+exports.getIndex = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
         res.render('store/index', { registeredHomes: registeredHomes, pageTitle: 'index' })
     });
+}
+exports.getHomeDetails = (req, res, next) => {
+    const homeId = req.params.homeId;
+    console.log(homeId);
+    res.render('store/home-detail', { homeId, pageTitle: 'home-list' })
+
 }

@@ -12,6 +12,7 @@ module.exports = class Home {
         // const hval=Home.fetchAll();
         // console.log("this is my reg homes in save function");
         // console.log(hval);
+        this.id=Math.random().toString();
         Home.fetchAll((registeredHomes) => {
             registeredHomes.push(this);
             const homeDataPath = path.join(rootDir, 'data', 'homes.json');
@@ -26,7 +27,7 @@ module.exports = class Home {
         console.log("in fetch all function");
         const homeDataPath = path.join(rootDir, 'data', 'homes.json');
         fs.readFile(homeDataPath, (err, data) => {
-            callback(!err ? JSON.parse(data) : []);
+            callback((!err) ? JSON.parse(data) : []);
         });
     }
 };
