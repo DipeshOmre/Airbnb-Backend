@@ -23,15 +23,16 @@ exports.getIndex = (req, res, next) => {
 exports.getHomeDetails = (req, res, next) => {
     const homeId = req.params.homeId;
     Home.findById(homeId, (homedetail) => {
-        if(!homedetail){
-
+        if (!homedetail) {
             res.redirect("/homes");
         }
-        else{
-
-            console.log("this is our home detail", homedetail)
+        else {
             res.render('store/home-detail', { homedetail, homeId, pageTitle: 'home-list' })
         }
     })
 
+}
+exports.postAddToFavourites=(req, res, next) => {
+    console.log("came to add to favourite",req.body);
+    res.redirect("/favourites");
 }

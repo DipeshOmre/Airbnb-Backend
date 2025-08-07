@@ -13,7 +13,7 @@
                 <li class="text-center list-none transition-colors duration-300">
 
                     <div class="max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-lg border border-black">
-                        <img class="w-full h-48 object-cover" src="https://wallpaperaccess.com/full/1700233.jpg"
+                        <img class="w-full h-48 object-cover" src="<%= element.photoUrl  %>"
                             alt="House Image">
                         <div class="p-4">
                             <h2 class="text-xl font-semibold mb-2">Beautiful Family House</h2>
@@ -30,8 +30,7 @@
                                 <span><strong>Rating:</strong> ⭐ <%= element.rating %></span>
                             </div>
                             <a class="mx-auto bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition" href="/homes/<%= element.id %>">Details</a>
-                            <button
-                                class="w-full  m-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">book</button>
+                            <%- include("../partials/favourite",{homedetail:element}) %>
                         </div>
                     </div>
 

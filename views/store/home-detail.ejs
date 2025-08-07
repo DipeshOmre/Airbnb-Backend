@@ -1,28 +1,48 @@
 <%- include("../partials/head") %>
 
     <%- include("../partials/nav") %>
-        <div class=" mt-8">
+        <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-6xl">
+            <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
+                Details of <%= homedetail.homeName %>
+            </h2>
 
-            <a href='/host/add-home' class="border border-black p-2 rounded-2xl hover:text-yellow-400 transition">Add
-                Home</a>
-            <h1 class="m-10 text-lg font-bold">Home Details:</h1>
-        </div>
-        <div>
-            <%=homeId%> is my home id
-            <br>
-            <%=homedetail.location%> is home detail location
-            <br>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="rounded-lg overflow-hidden">
+                    <img src="<%= homedetail.photoUrl %>" alt="<%= homedetail.name %>" class="w-full h-96 object-cover">
+                </div>
 
-            <%=homedetail.homeName%> is home detail 
-            <br>
+                <div class="space-y-6">
 
-            <%=homedetail.price%> is home detail
-            <br>
 
-            <%=homedetail.rating%> is home detail
-            <br>
+                    <div class="border-b pb-4">
+                        <h3 class="text-2xl font-semibold mb-2">Location</h3>
+                        <p class="text-gray-600">
+                            <%= homedetail.location %>
+                        </p>
+                    </div>
 
-        </div>
+                    <div class="border-b pb-4">
+                        <h3 class="text-2xl font-semibold mb-2">Price</h3>
+                        <p class="text-green-600 text-xl font-bold">$<%= homedetail.price %> / night</p>
+                    </div>
+
+                    <div class="border-b pb-4">
+                        <h3 class="text-2xl font-semibold mb-2">Rating</h3>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-xl">★</span>
+                            <span class="ml-2 text-lg">
+                                <%= homedetail.rating %> / 5
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                    </div>
+                    <div>
+                        <%- include("../partials/favourite") %>
+                    </div>
+                </div>
+            </div>
+        </main>
         <%- include("../partials/footer") %>
 
             </body>

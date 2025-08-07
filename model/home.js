@@ -4,16 +4,15 @@ const fs = require('fs');
 const homeDataPath = path.join(rootDir, 'data', 'homes.json');
 
 module.exports = class Home {
-    constructor(homeName, location, price, rating) {
+    constructor(homeName, location, price, rating, photoUrl) {
         this.homeName = homeName;
         this.location = location;
         this.price = price;
         this.rating = rating;
+        this.photoUrl=photoUrl;
     }
     save() {
-        // const hval=Home.fetchAll();
-        // console.log("this is my reg homes in save function");
-        // console.log(hval);
+       
         this.id=Math.random().toString();
         Home.fetchAll((registeredHomes) => {
             registeredHomes.push(this);
@@ -25,7 +24,6 @@ module.exports = class Home {
 
     }
     static fetchAll(callback) {
-        console.log("in fetch all function");
         fs.readFile(homeDataPath, (err, data) => {
             callback((!err) ? JSON.parse(data) : []);
         });
