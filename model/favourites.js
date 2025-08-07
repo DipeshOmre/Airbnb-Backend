@@ -8,7 +8,7 @@ module.exports = class Favourite {
     static addToFavourite(id, callback) {
         Favourite.getFavourites((favourites) => {
             if (favourites.includes(id)) {
-                console.log("already in favourites")
+                callback("Home is already in favourites");
             }
             else {
                 favourites.push(id);
