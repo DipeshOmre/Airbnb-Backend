@@ -22,7 +22,16 @@ exports.getIndex = (req, res, next) => {
 }
 exports.getHomeDetails = (req, res, next) => {
     const homeId = req.params.homeId;
-    console.log(homeId);
-    res.render('store/home-detail', { homeId, pageTitle: 'home-list' })
+    Home.findById(homeId, (homedetail) => {
+        if(!homedetail){
+
+            res.redirect("/homes");
+        }
+        else{
+
+            console.log("this is our home detail", homedetail)
+            res.render('store/home-detail', { homedetail, homeId, pageTitle: 'home-list' })
+        }
+    })
 
 }
