@@ -3,10 +3,12 @@
     <%- include("../partials/nav") %>
         <div class=" mt-8">
 
-            <a href='/host/add-home' class="border border-black p-2 rounded-2xl hover:text-yellow-400 transition">Add Home</a>
+            <a href='/host/add-home' class="border border-black p-2 rounded-2xl hover:text-yellow-400 transition">Add
+                Home</a>
             <h1>here are your favourites:</h1>
         </div>
-        <ul class="text-center m-4 list-disc flex flex-row flex-wrap w-[75%] justify-center items-center list-inside gap-6">
+        <ul
+            class="text-center m-4 list-disc flex flex-row flex-wrap w-[75%] justify-center items-center list-inside gap-6">
             <% registeredHomes.forEach((element)=> {%>
 
                 <li class="text-center list-none transition-colors duration-300">
@@ -28,16 +30,14 @@
                                 </span>
                                 <span><strong>Rating:</strong> ⭐ <%= element.rating %></span>
                             </div>
-                            <button
-                                class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">book</button>
                         </div>
                     </div>
 
                 </li>
                 <% }); %>
         </ul>
-    <%- include("../partials/footer") %>
+        <%- include("../partials/footer") %>
 
-        </body>
+            </body>
 
-        </html>
+            </html>
