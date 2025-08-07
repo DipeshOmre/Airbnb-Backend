@@ -5,27 +5,33 @@
 
             <a href='/host/add-home' class="border border-black p-2 rounded-2xl hover:text-yellow-400 transition">Add
                 Home</a>
-            <h1>Welcome to our Index page:</h1>
+            <h1 class="m-4">Welcome to our Index page:</h1>
         </div>
-        <ul class="list-disc flex flex-col justify-center items-center list-inside space-y-2">
+        <ul class="text-center m-4 list-disc flex flex-row flex-wrap w-[75%] justify-center items-center list-inside gap-6">
             <% registeredHomes.forEach((element)=> {%>
 
-                <li class=" w-[80%] list-none transition-colors duration-300">
-                    <div
-                        class="max-w-sm mx-auto border flex flex-col justify-center items-center border-b-gray-900 bg-white rounded-2xl shadow-lg p-6 space-y-4 hover:shadow-2xl transition-shadow duration-300">
-                        <div class="text-lg font-semibold text-gray-700">
-                            <%= element.homeName %>
+                <li class="text-center list-none transition-colors duration-300">
+
+                    <div class="max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-lg border border-black">
+                        <img class="w-full h-48 object-cover" src="https://wallpaperaccess.com/full/1700233.jpg"
+                            alt="House Image">
+                        <div class="p-4">
+                            <h2 class="text-xl font-semibold mb-2">Beautiful Family House</h2>
+                            <div class="flex flex-wrap justify-between text-sm text-gray-600 mb-4">
+                                <span><strong>Admin:</strong>
+                                    <%= element.homeName %>
+                                </span>
+                                <span><strong>Location:</strong>
+                                    <%= element.location %>
+                                </span>
+                                <span><strong>Price:</strong>
+                                    <%= element.price %>
+                                </span>
+                                <span><strong>Rating:</strong> ⭐ <%= element.rating %></span>
+                            </div>
+                            <button
+                                class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">book</button>
                         </div>
-                        <div class="text-lg font-semibold text-gray-700">
-                            <%= element.location %>
-                        </div>
-                        <div class="text-lg font-semibold text-gray-700">
-                            <%= element.price %>
-                        </div>
-                        <div class="text-lg font-semibold  text-gray-700">
-                            <%= element.rating %>
-                        </div>
-                        <button class="self-end cursor-pointer border border-black p-2 rounded-2xl">Book</button>
                     </div>
 
                 </li>
