@@ -1,7 +1,7 @@
 const Home = require("../model/home");
 exports.getaddhome = (req, res, next) => {
     // res.sendFile(path.join(rootDir,'views','addhome.html'));
-    res.render("host/addhome", { pageTitle: 'form page' })
+    res.render("host/edit-home", { pageTitle: 'form page' })
 }
 exports.postaddhome = (req, res, next) => {
     const { homeName, location, price, rating, photoUrl} = req.body;
@@ -15,4 +15,9 @@ exports.getHostHome = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
         res.render('host/host-home-list', { registeredHomes: registeredHomes, pageTitle: 'host home list' })
     });
+}
+exports.getEditHome=(req, res, next) => {
+        console.log(req.params.homeId);
+       res.render("host/edit-home", { pageTitle: 'form page' })
+
 }
