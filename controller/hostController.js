@@ -1,3 +1,4 @@
+const { deleteFavourite } = require("../model/favourites");
 const Home = require("../model/home");
 exports.getaddhome = (req, res, next) => {
     // res.sendFile(path.join(rootDir,'views','addhome.html'));
@@ -41,7 +42,9 @@ exports.postDeleteHome = (req, res, next) => {
     console.log(homeId);
     Home.deleteById(homeId, (err) => {
         console.log("data is deleted succefully",err);
-        res.redirect("/host/host-home-list");
+        deleteFavourite(homeId,()=>{
+            res.redirect("/host/host-home-list");
+        })
     });
 
 }

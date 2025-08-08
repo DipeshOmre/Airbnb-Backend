@@ -14,12 +14,6 @@ module.exports = class Favourite {
                 favourites.push(id);
                 fs.writeFile(favouriteDataPath, JSON.stringify(favourites), callback);
             }
-            // if(!listhomes.includes(idx)){
-            // listhomes.push(idx);
-            // fs.writeFile(favouriteDataPath,JSON.stringify(listhomes),()=>{
-            //     console.log("data is added in favourites");
-            // });
-            // }
         })
     }
     static getFavourites(callback) {
@@ -27,13 +21,18 @@ module.exports = class Favourite {
             callback(!err ? JSON.parse(data) : []);
         })
     }
-    // static deleteFavourite(homeId,callback){
-    //      fs.readFile(favouriteDataPath, (err, data) => {
-    //         // callback(!err ? JSON.parse(data) : []);
-    //         if(err){
-    //             console.log(homeId)
-    //         }
-    //     })
-    // }
+    static deleteFavourite(homeId,callback){
+        //  fs.readFile(favouriteDataPath, (err, data) => {
+        //     const newdt=JSON.parse(data).filter(e=>e!==homeId);
+        //     console.log("new data here")
+        //     console.log(newdt);
+        //     fs.writeFile(favouriteDataPath, JSON.stringify(newdt), callback);
+        // })
+        Favourite.getFavourites(homeIds=>{
+            homeIds=homeIds.filter(e=>e!==homeId);
+            fs.writeFile(favouriteDataPath, JSON.stringify(homeIds), callback);
+        })
+        
+    }
 
 };

@@ -1,3 +1,4 @@
+const Favourite = require("../model/favourites");
 const { addToFavourite, getFavourites } = require("../model/favourites");
 const Home = require("../model/home");
 
@@ -53,5 +54,12 @@ exports.postAddToFavourites=(req, res, next) => {
             console.log(err);
         }
         res.redirect("/favourites");
+    })
+}
+exports.postRemoveFromFavourite=(req, res, next) => {
+    const homeId=req.params.homeId;
+    Favourite.deleteFavourite(homeId,(err)=>{
+        console.log(err);
+        res.redirect('/favourites')
     })
 }

@@ -31,6 +31,9 @@
                                 <span><strong>Rating:</strong> ⭐ <%= element.rating %></span>
                             </div>
                         </div>
+                        <form action="/favourites/delete/<%=element.id%>" method="POST">
+                            <button class="cursor-pointer border bg-red-400 m-2 text-white border-black p-2 rounded-2xl" type="submit">Remove from favourites</button>
+                        </form>
                     </div>
 
                 </li>
