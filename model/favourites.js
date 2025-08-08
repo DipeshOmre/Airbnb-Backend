@@ -27,5 +27,13 @@ module.exports = class Favourite {
             callback(!err ? JSON.parse(data) : []);
         })
     }
+    // static deleteFavourite(homeId,callback){
+    //      fs.readFile(favouriteDataPath, (err, data) => {
+    //         // callback(!err ? JSON.parse(data) : []);
+    //         if(err){
+    //             console.log(homeId)
+    //         }
+    //     })
+    // }
 
 };

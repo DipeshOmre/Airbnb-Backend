@@ -30,8 +30,12 @@
                                 </span>
                                 <span><strong>Rating:</strong> ⭐ <%= element.rating %></span>
                             </div>
-                            <a href="/host/edit-home/<%= element.id %>/?editing=true" class="self-end cursor-pointer border bg-blue-700 text-white border-black p-2 rounded-2xl">Edit</a>
-                            <a class="self-end cursor-pointer border bg-blue-700 text-white border-black p-2 rounded-2xl">Delete</a>
+                            <a href="/host/edit-home/<%= element.id %>/?editing=true"
+                                class="self-end cursor-pointer border bg-blue-700 text-white border-black p-2 rounded-2xl">Edit</a>
+                            <form class="m-2" action="/host/delete-home/<%= element.id %>" method="POST">
+                                <button type="submit"
+                                    class="self-end cursor-pointer border bg-blue-700 text-white border-black p-2 rounded-2xl">Delete</button>
+                            </form>
                         </div>
                     </div>
 

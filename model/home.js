@@ -9,13 +9,20 @@ module.exports = class Home {
         this.location = location;
         this.price = price;
         this.rating = rating;
-        this.photoUrl=photoUrl;
+        this.photoUrl = photoUrl;
     }
     save() {
-       
-        this.id=Math.random().toString();
+
         Home.fetchAll((registeredHomes) => {
-            registeredHomes.push(this);
+            if (this.id) {
+                registeredHomes = registeredHomes.map(home => {
+                    return home.id === this.id ? this : home;
+                })
+            }
+            else {
+                this.id = Math.random().toString();
+                registeredHomes.push(this);
+            }
             fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), (err) => {
                 console.log(err);
             })
@@ -28,10 +35,22 @@ module.exports = class Home {
             callback((!err) ? JSON.parse(data) : []);
         });
     }
-    static findById(homeId,callback){
-        this.fetchAll((homes)=>{
-            const homeFound=homes.find((home)=>home.id===homeId);
+    static findById(homeId, callback) {
+        this.fetchAll((homes) => {
+            const homeFound = homes.find((home) => home.id === homeId);
             callback(homeFound);
         })
+    }
+    static deleteById(homeId, callback) {
+        Home.fetchAll((homes) => {
+            homes = homes.filter(home => {
+                return home.id !== homeId;
+            })
+            console.log(homes);
+            fs.writeFile(homeDataPath, JSON.stringify(homes), (err) => {
+                console.log(err);
+                callback();
+            })
+        });
     }
 };
