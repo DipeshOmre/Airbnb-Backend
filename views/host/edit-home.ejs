@@ -2,11 +2,12 @@
 
 <%- include("../partials/nav") %>
 
-    <form action="/host/add-home" method='POST' class="p-10 mx-auto rounded-2xl mt-16 flex flex-col justify-center items-center w-[70%] bg-gray-500 gap-5 ">
-            <h1 class="text-[3em] font-bold">Fill the home info</h1>
+    <form action="/host/<%= editing?"edit-home":"add-home" %>" method='POST' class="p-10 mx-auto rounded-2xl mt-16 flex flex-col justify-center items-center w-[70%] bg-gray-500 gap-5 ">
+            <h1 class="text-[3em] font-bold"> <%= editing? "Edit":"Fill" %> the home info</h1>
         <input 
             type='text' 
             name='homeName' 
+            value="<%= editing?home.homeName:""  %>"
             placeholder='Enter Home Name' 
             required
             class="border w-[100%] border-black px-4 py-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400"
@@ -15,6 +16,7 @@
         
             type='text' 
             name='location' 
+            value="<%= editing?home.location:""  %>"
             placeholder='Enter Home location' 
             required
             class="border w-[100%]  border-black px-4 py-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400"
@@ -23,6 +25,7 @@
         
             type='text' 
             name='price' 
+            value="<%= editing?home.price:""  %>"
             placeholder='Enter Home price' 
             required
             class="border w-[100%]  border-black px-4 py-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400"
@@ -31,6 +34,7 @@
         
             type='text' 
             name='rating' 
+            value="<%= editing?home.rating:""  %>"
             placeholder='Enter Home rating' 
             required
             class="border w-[100%]  border-black px-4 py-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400"
@@ -39,13 +43,15 @@
         
             type='text' 
             name='photoUrl' 
+            value="<%= editing?home.photoUrl:""  %>"
+
             placeholder='Enter Home photo url' 
             required
             class="border w-[100%]  border-black px-4 py-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-400"
         >
         <input 
             type='submit' 
-            value='Add Home' 
+            value='<%= editing?"Edit":"Add home" %>'
             class="bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold px-6 py-2 rounded-md transition"
         >
     </form>

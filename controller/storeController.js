@@ -3,12 +3,12 @@ const Home = require("../model/home");
 
 exports.gethome = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
-        res.render('store/home-list', { registeredHomes: registeredHomes, pageTitle: 'home-list' })
+        res.render('store/home-list', { registeredHomes: registeredHomes, pageTitle: 'home-list',currentPage:'Home' })
     });
 }
 exports.getBookings = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
-        res.render('store/bookings', { registeredHomes: registeredHomes, pageTitle: 'bookings' })
+        res.render('store/bookings', { registeredHomes: registeredHomes, pageTitle: 'bookings', currentPage:'bookings' })
     });
 }
 exports.getFavouriteList = (req, res, next) => {
@@ -24,13 +24,13 @@ exports.getFavouriteList = (req, res, next) => {
     getFavourites((favs)=>{
         Home.fetchAll((registeredHomes)=>{
             const newreg=favs.map(homeId=>registeredHomes.find(home=>home.id===homeId));
-            res.render('store/favourite-list', { registeredHomes: newreg, pageTitle: 'favourite-list' })
+            res.render('store/favourite-list', { registeredHomes: newreg, pageTitle: 'favourite-list',currentPage:'favourites' })
         })
     })
 }
 exports.getIndex = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
-        res.render('store/index', { registeredHomes: registeredHomes, pageTitle: 'index' })
+        res.render('store/index', { registeredHomes: registeredHomes, pageTitle: 'index',currentPage:'index' })
     });
 
     
@@ -42,7 +42,7 @@ exports.getHomeDetails = (req, res, next) => {
             res.redirect("/homes");
         }
         else {
-            res.render('store/home-detail', { homedetail, homeId, pageTitle: 'home-list' })
+            res.render('store/home-detail', { homedetail, homeId, pageTitle: 'home-list',currentPage:'Home' })
         }
     })
 
